@@ -13,7 +13,7 @@ class ReservationSerializer(serializers.ModelSerializer):
    class Meta:
        model = Reservation
        fields = [
-           'username',
+           'user',
            'full_name',
            'email',
            'phone_number',
@@ -23,3 +23,17 @@ class ReservationSerializer(serializers.ModelSerializer):
 
    def get_username(self, obj):
         return str(obj.user.username)
+
+
+class ReservationUpdateCreateSerializer(serializers.ModelSerializer):
+
+
+   class Meta:
+       model = Reservation
+       fields = [
+           'full_name',
+           'email',
+           'phone_number',
+           'second_phone_number',
+           'description',
+       ]
