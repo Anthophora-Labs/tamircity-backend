@@ -12,9 +12,9 @@ from rest_framework.mixins import DestroyModelMixin
 
 # from account.api.throttles import RegisterThrottle
 # from post.api.paginations import PostPagination
-# from reservations.api.permissions import IsOwner
+from reservations.api.permissions import IsOwner
 from rest_framework.permissions import (
-    IsAuthenticated,
+    IsAuthenticated, IsAdminUser
 )
 
 from reservations.models import Reservation
@@ -25,11 +25,11 @@ class ReservationListAPIView(ListAPIView):
     #throttle_scope  = 'mustafa'
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
-    #filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['title','content']
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['full_name','description'] # api/v1/reservations/list?search=mustafa&ordering=full_name
     #pagination_class = ReservationPagination
 
-    # def get_queryset(self):
+    # def get_queryset(self): # Return only non draft posts
     #     queryset = Reservation.objects.filter(draft=False)
     #     return queryset
 
@@ -44,19 +44,24 @@ class ReservationDeleteAPIView(DestroyAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     lookup_field = 'pk' #pk or slug
+    permission_classes = [IsOwner] # If you want to allow only owner users or admin to delete a post
 
 
-class ReservationUpdateAPIView(UpdateAPIView):
+class ReservationUpdateAPIView(RetrieveUpdateAPIView):  # UpdateAPIView
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     lookup_field = 'pk' #pk or slug
+    permission_classes = [IsOwner] # If you want to allow only owner users or admin to update a post
+
+    # def perform_update(self, serializer):
+    #     serializer.save(modified_by = self.request.user)
 
 
-class ReservationUpdateAPIView(RetrieveUpdateAPIView, DestroyModelMixin):
+class ReservationUpdateWithDeleteAPIView(RetrieveUpdateAPIView, DestroyModelMixin):
     queryset = Reservation.objects.all()
     serializer_class = ReservationUpdateCreateSerializer
-    lookup_field = 'slug'
-    #permission_classes = [IsOwner]
+    lookup_field = 'pk'
+    permission_classes = [IsOwner] # If you want to allow only owner users or admin to update a post
 
     def perform_update(self, serializer):
         serializer.save(modified_by = self.request.user)
@@ -68,7 +73,8 @@ class ReservationUpdateAPIView(RetrieveUpdateAPIView, DestroyModelMixin):
 class ReservationCreateAPIView(CreateAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationUpdateCreateSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] # If you want to allow only authenticated users to create a post
 
-    def perform_create(self, serializer):
+    def perform_create(self, serializer): # Save user who created the post
         serializer.save(user = self.request.user)
+        # Write here custom code for creating a post
