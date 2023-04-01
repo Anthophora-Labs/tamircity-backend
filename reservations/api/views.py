@@ -11,7 +11,7 @@ from rest_framework.generics import (
 from rest_framework.mixins import DestroyModelMixin
 
 # from account.api.throttles import RegisterThrottle
-# from post.api.paginations import PostPagination
+from reservations.api.paginations import ReservationPagination
 from reservations.api.permissions import IsOwner
 from rest_framework.permissions import (
     IsAuthenticated, IsAdminUser
@@ -27,7 +27,7 @@ class ReservationListAPIView(ListAPIView):
     serializer_class = ReservationSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['full_name','description'] # api/v1/reservations/list?search=mustafa&ordering=full_name
-    #pagination_class = ReservationPagination
+    pagination_class = ReservationPagination
 
     # def get_queryset(self): # Return only non draft posts
     #     queryset = Reservation.objects.filter(draft=False)

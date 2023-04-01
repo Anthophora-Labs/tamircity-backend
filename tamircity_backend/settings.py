@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,6 +58,10 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME' : timedelta(minutes=15)
+# }
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -64,6 +69,19 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#         'rest_framework.authentication.SessionAuthentication'
+#     ],
+#     'DEFAULT_THROTTLE_CLASSES': (
+#         'rest_framework.throttling.ScopedRateThrottle',
+#     ),
+#     'DEFAULT_THROTTLE_RATES': {
+#         'registerthrottle': '15/hour',
+#         #'hasan' : '5/hour'
+#     }
+# }
 
 ROOT_URLCONF = "tamircity_backend.urls"
 
@@ -131,6 +149,8 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
+# USE_L10N = True
+
 USE_TZ = True
 
 
@@ -138,6 +158,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

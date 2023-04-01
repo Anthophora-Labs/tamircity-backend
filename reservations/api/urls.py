@@ -1,4 +1,5 @@
 from django.urls import path, include
+# from django.views.decorators.cache import cache_page
 from reservations.api.views import (
     ReservationListAPIView,
     ReservationDetailAPIView,
@@ -7,6 +8,7 @@ from reservations.api.views import (
     ReservationCreateAPIView,
     )
 
+app_name = 'reservations'
 
 urlpatterns = [
     path('list', ReservationListAPIView.as_view(), name='list'),
