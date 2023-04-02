@@ -24,10 +24,11 @@ class UserSerializer(ModelSerializer):
         profile_serializer = ProfileSerializer(instance.profile, data=profile)
         profile_serializer.is_valid(raise_exception=True)
         profile_serializer.save()
-        return super(UserSerializer, self).update(instance, validated_data) # Additional Profile Update, also update User
+        return super(UserSerializer, self).update(instance, validated_data)
+        # Additional Profile Update, also update User
 
 
-# changing password
+# API Views Unlike Generic Views
 class ChangePasswordSerializer(Serializer):
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
@@ -45,7 +46,7 @@ class RegisterSerializer(ModelSerializer):
         fields = ('id', 'username', 'password')
 
     def validate(self, attr):
-        validate_password(attr['password'])
+        validate_password(attr['password']) # Check password strength or raise ValidationError
         return attr
 
     def create(self, validated_data):

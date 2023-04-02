@@ -13,3 +13,11 @@ urlpatterns = [
     path('change-password', UpdatePassword.as_view(), name='change-password'),
     path('register', CreateUserView.as_view(), name='register'),
 ]
+
+"""
+Content is
+{
+"new_password": "123456",
+"old_password": "123456"
+}
+"""
