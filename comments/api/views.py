@@ -1,11 +1,11 @@
 from rest_framework.generics import (
                                     CreateAPIView,
-                                     ListAPIView,
+                                    ListAPIView,
                                     UpdateAPIView,
+                                    DestroyAPIView,
                                     RetrieveAPIView
                                     )
-#mixinler
-from rest_framework.mixins import  DestroyModelMixin
+from rest_framework.mixins import DestroyModelMixin
 from rest_framework.permissions import IsAuthenticated
 from comments.api.paginations import CommentPagination
 from comments.api.permissions import IsOwner
@@ -23,18 +23,19 @@ class CommentCreateAPIView(CreateAPIView):
 
 
 class CommentListAPIView(ListAPIView):
+    queryset = Comment.objects.all()
     serializer_class = CommentListSerializer
     pagination_class = CommentPagination
-    def get_queryset(self):
-        queryset = Comment.objects.filter(parent = None)
-        query = self.request.GET.get("q")
-        if query:
-            queryset = queryset.filter(post = query)
-        return queryset
+
+    # def get_queryset(self):
+    #     queryset = Comment.objects.filter(parent = None)
+    #     query = self.request.GET.get("q") # queryparam olaarak gonderilen q, query varsa postu filtrele
+    #     if query:
+    #         queryset = queryset.filter(post = query)
+    #     return queryset
 
 
-
-class CommentUpdateAPIView(DestroyModelMixin, UpdateAPIView, RetrieveAPIView):
+class CommentUpdateDeleteAPIView(DestroyModelMixin, UpdateAPIView, RetrieveAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentDeleteUpdateSerializer
     lookup_field = 'pk'
@@ -42,3 +43,17 @@ class CommentUpdateAPIView(DestroyModelMixin, UpdateAPIView, RetrieveAPIView):
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+
+
+class CommentDeleteAPIView(DestroyAPIView, RetrieveAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentDeleteUpdateSerializer
+    lookup_field = 'pk'
+    permission_classes = [IsOwner]
+
+
+class CommentUpdateAPIView(UpdateAPIView, RetrieveAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentDeleteUpdateSerializer
+    lookup_field = 'pk'
+    permission_classes = [IsOwner]

@@ -9,7 +9,7 @@ from reservations.models import Reservation
 class CommentCreateSerializer(ModelSerializer):
     class Meta:
         model = Comment
-        exclude = ['created',]
+        exclude = ['created_date',]
 
     # def validate(self, attrs):
     #     if(attrs["parent"]):
@@ -19,29 +19,36 @@ class CommentCreateSerializer(ModelSerializer):
 
 
 class UserSerializer(ModelSerializer):
+
+
     class Meta:
         model = User
         fields = ('first_name','last_name','id','email')
 
 
-class PostCommentSerializer(ModelSerializer):
+class ReservationCommentSerializer(ModelSerializer):
+
+
     class Meta:
         model = Reservation
-        fields = ('title','slug','id')
+        fields = ('full_name', 'slug', 'id', 'description', 'created_date')
 
 
 class CommentListSerializer(ModelSerializer):
     queryset = Comment.objects.all()
     # replies = SerializerMethodField()
-    # user = UserSerializer()
-    # post = PostCommentSerializer()
+    user = UserSerializer()
+    reservation = ReservationCommentSerializer()
+    # depth = 1 # 1 level of depth
+
+
     class Meta:
         model = Comment
         fields = '__all__'
 
-    def get_replies(self, obj):
-        if obj.any_children:
-            return CommentListSerializer(obj.children(), many=True).data
+    # def get_replies(self, obj):
+    #     if obj.any_children:
+    #         return CommentListSerializer(obj.children(), many=True).data
 
     # def get_queryset(self):
     #     return Comment.objects.filter(parent = None)
