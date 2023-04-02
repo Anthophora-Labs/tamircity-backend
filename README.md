@@ -59,3 +59,11 @@
  * https://www.python.org/
  * https://www.django-rest-framework.org/#installation
  * https://www.djangoproject.com/
+
+### Dev Server
+ * sudo docker-compose up -d
+ * sudo docker ps -a
+ * sudo docker exec -it <container_id> /bin/bash
+ * python manage.py makemigrations
+ * python manage.py migrate
+ * python manage.py collectstatic

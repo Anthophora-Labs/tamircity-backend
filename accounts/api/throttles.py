@@ -12,3 +12,7 @@ class RegisterThrottle(SimpleRateThrottle):
             'scope': self.scope,
             'ident': self.get_ident(request)
         }
+
+
+# AnonrateThrottle does not look request type get or post, unlike we only look GET above.
+# UserratedThrottle looks user or unauthorized user using IP address.
