@@ -17,7 +17,7 @@ class ProfileView(RetrieveUpdateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-    def get_object(self):
+    def get_object(self): # Same as lookup_field
         queryset = self.get_queryset()
         obj = get_object_or_404(queryset, id = self.request.user.id)
         return obj

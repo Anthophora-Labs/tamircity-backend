@@ -45,3 +45,17 @@
  * https://www.sonarqube.org/downloads/
  * https://mustafaakgul.jetbrains.space/
  * Github Copilot
+
+### Authentication - Authorization
+ * https://jwt.io/
+
+### Naming Convention - Code Style - Best Practices
+ * Reformat Code, Files
+ * https://hub.packtpub.com/code-style-django/
+ * https://learndjango.com/tutorials/django-best-practices-projects-vs-apps
+ * https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/
+
+### Generics
+ * https://www.python.org/
+ * https://www.django-rest-framework.org/#installation
+ * https://www.djangoproject.com/

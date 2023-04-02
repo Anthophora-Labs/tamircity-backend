@@ -16,7 +16,7 @@ class Profile(models.Model): #TechnicalService
         ordering = ["-id"]
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 @receiver(post_save, sender=User)
 def create_user_prof(sender, instance, created, **kwargs):
