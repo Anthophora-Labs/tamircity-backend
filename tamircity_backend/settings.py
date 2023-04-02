@@ -164,8 +164,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 Dev Configurations
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR)), 'static')
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR)), 'media')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR)), 'opt/services/djangoapp/static')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR)), 'opt/services/djangoapp/media')
 """
 
 # Default primary key field type

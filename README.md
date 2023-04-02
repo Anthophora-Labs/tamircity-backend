@@ -57,13 +57,25 @@
 
 ### Generics
  * https://www.python.org/
- * https://www.django-rest-framework.org/#installation
+ * https://www.django-rest-framework.org/
  * https://www.djangoproject.com/
 
-### Dev Server
+### Development Server
  * sudo docker-compose up -d
  * sudo docker ps -a
  * sudo docker exec -it <container_id> /bin/bash
  * python manage.py makemigrations
  * python manage.py migrate
  * python manage.py collectstatic
+ * python manage.py createsuperuser
+ * Debug false
+ * Secret Key Hiding
+ * Allowed Hosts
+
+### Production Server
+ * dns configuration
+ * add domain.com and www.domain.com to ALLOWED_HOSTS
+
+### TODO
+ * https://github.com/mustafaakgul/AtlasFinanceAccount
+ * Techs : https://education.github.com/pack
