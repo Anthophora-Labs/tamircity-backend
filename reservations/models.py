@@ -10,7 +10,7 @@ class Reservation(models.Model):
     phone_number = models.CharField(max_length=50)
     second_phone_number = models.CharField(max_length=50)
     description = models.TextField(max_length=500)
-    image = models.ImageField(upload_to='media/reservations/', blank=True, null=True)
+    image = models.ImageField(upload_to='reservations', blank=True, null=True)
     # modified_by = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='modified_by', blank=True, null=True)
 
     slug = models.SlugField(unique=True, max_length=150, editable=False) # Editable ile buna hiç bi şekilde endpoint dahil ulasamaz ekleme tyapalaz gormez

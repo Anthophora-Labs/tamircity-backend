@@ -3,22 +3,24 @@ from reservations.models import Reservation
 
 
 class ReservationSerializer(serializers.ModelSerializer):
-   # url = serializers.HyperlinkedIdentityField(
-   #      view_name='post:detail',
-   #      lookup_field='slug'
-   # )
+   url = serializers.HyperlinkedIdentityField(
+        view_name='reservations:detail',
+        #lookup_field='slug'
+   )
    username = serializers.SerializerMethodField()
 
 
    class Meta:
        model = Reservation
        fields = [
-           'username',
+           'url', # old is 'id'
+           'username', # old is 'user'
            'full_name',
            'email',
            'phone_number',
            'second_phone_number',
            'description',
+           'image',
            'slug',
        ]
 

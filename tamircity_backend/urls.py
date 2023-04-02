@@ -25,9 +25,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
 
-    path('api/v1/reservations/', include('reservations.api.urls')),
-
-#     path('api/comment/', include('comment.api.urls', namespace='comment')),
+    path('api/v1/reservations/', include('reservations.api.urls'), name='reservations'),
+    path('api/v1/comments/', include('comments.api.urls'), name='comments'),
 #     path('api/favourite/', include('favourite.api.urls', namespace='favourite')),
 #     path('api/user/', include('account.api.urls', namespace='acoount')),
 #     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),

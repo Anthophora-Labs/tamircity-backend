@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     #Local
     'reservations',
+    'comments',
 
     #Third-party Libraries
     'rest_framework',
