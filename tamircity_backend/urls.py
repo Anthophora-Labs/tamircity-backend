@@ -27,8 +27,8 @@ urlpatterns = [
 
     path('api/v1/reservations/', include('reservations.api.urls'), name='reservations'),
     path('api/v1/comments/', include('comments.api.urls'), name='comments'),
-    path('api/v1/favourite/', include('favourite.api.urls'), name='favourite'),
+    path('api/v1/favourites/', include('favourites.api.urls'), name='favourite'),
 #     path('api/user/', include('account.api.urls', namespace='acoount')),
-#     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-#     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

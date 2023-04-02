@@ -1,6 +1,6 @@
 from django.urls import path
 
-from favourite.api.views import FavouriteListCreateAPIView, FavouriteAPIView
+from favourites.api.views import FavouriteListCreateAPIView, FavouriteAPIView
 
 app_name = "favourite"
 

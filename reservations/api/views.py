@@ -25,6 +25,7 @@ class ReservationListAPIView(ListAPIView):
     #throttle_scope  = 'mustafa'
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
+    permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['full_name','description'] # api/v1/reservations/list?search=mustafa&ordering=full_name
     pagination_class = ReservationPagination

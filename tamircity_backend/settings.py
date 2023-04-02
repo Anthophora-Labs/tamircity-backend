@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     #Local
     'reservations',
     'comments',
-    'favourite',
+    'favourites',
+    'accounts',
 
     #Third-party Libraries
     'rest_framework',
@@ -60,30 +61,26 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME' : timedelta(minutes=15)
-# }
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME' : timedelta(minutes=60)
+}
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    ],
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.ScopedRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'registerthrottle': '15/hour',
+        #'hasan' : '5/hour'
+    }
 }
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#         'rest_framework.authentication.SessionAuthentication'
-#     ],
-#     'DEFAULT_THROTTLE_CLASSES': (
-#         'rest_framework.throttling.ScopedRateThrottle',
-#     ),
-#     'DEFAULT_THROTTLE_RATES': {
-#         'registerthrottle': '15/hour',
-#         #'hasan' : '5/hour'
-#     }
-# }
 
 ROOT_URLCONF = "tamircity_backend.urls"
 

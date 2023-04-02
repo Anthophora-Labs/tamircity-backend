@@ -3,7 +3,7 @@ import json
 from rest_framework.test import APITestCase
 from django.urls import reverse
 
-from favourite.models import Favourite
+from favourites.models import Favourite
 from post.models import Post
 
 

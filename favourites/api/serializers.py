@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from favourite.models import Favourite
+from favourites.models import Favourite
 
 
 class FavouriteListCreateAPISerializer(ModelSerializer):
