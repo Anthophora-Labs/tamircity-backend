@@ -20,6 +20,7 @@ class Profile(models.Model): #TechnicalService
 
 @receiver(post_save, sender=User)
 def create_user_prof(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
+    if not created:
+        return
+    Profile.objects.create(user=instance)
     instance.profile.save()
