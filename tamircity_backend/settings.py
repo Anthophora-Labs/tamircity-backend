@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'device_types',
     'brands',
     'models',
+    'payments',
 
     #Third-party Libraries
     'rest_framework',

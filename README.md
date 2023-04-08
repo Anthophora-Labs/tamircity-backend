@@ -1,4 +1,5 @@
 ### Configuration of Django
+ * python manage.py startapp <app_name>
  * python manage.py runserver
  * python manage.py makemigrations
  * python manage.py migrate

@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/v1/device_types/', include('device_types.api.urls'), name='device_types'),
     path('api/v1/brands/', include('brands.api.urls'), name='brands'),
     path('api/v1/models/', include('models.api.urls'), name='models'),
+    path('api/v1/payments/', include('payments.api.urls'), name='payments'),
 
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
