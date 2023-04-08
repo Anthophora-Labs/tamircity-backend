@@ -14,8 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-]
+    path('api-auth/', include('rest_framework.urls')),
+
+    path('api/v1/reservations/', include('reservations.api.urls'), name='reservations'),
+    path('api/v1/comments/', include('comments.api.urls'), name='comments'),
+    path('api/v1/favourites/', include('favourites.api.urls'), name='favourites'),
+    path('api/v1/accounts/', include('accounts.api.urls'), name='accounts'),
+    path('api/v1/device_types/', include('device_types.api.urls'), name='device_types'),
+    path('api/v1/brands/', include('brands.api.urls'), name='brands'),
+    path('api/v1/models/', include('models.api.urls'), name='models'),
+    path('api/v1/payments/', include('payments.api.urls'), name='payments'),
+
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
