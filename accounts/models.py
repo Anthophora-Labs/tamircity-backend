@@ -24,3 +24,19 @@ def create_user_prof(sender, instance, created, **kwargs):
         return
     Profile.objects.create(user=instance)
     instance.profile.save()
+
+
+class Customer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='customer')
+    full_name = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField(max_length=200, blank=True, null=True)
+    phone = models.CharField(max_length=200, blank=True, null=True)
+    address = models.CharField(max_length=200, blank=True, null=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-id"]
+
+    def __str__(self):
+        return self.user.username

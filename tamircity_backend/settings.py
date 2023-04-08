@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'comments',
     'favourites',
     'accounts',
+    'device_types',
+    'brands',
+    'models',
 
     #Third-party Libraries
     'rest_framework',

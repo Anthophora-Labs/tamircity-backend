@@ -29,6 +29,10 @@ urlpatterns = [
     path('api/v1/comments/', include('comments.api.urls'), name='comments'),
     path('api/v1/favourites/', include('favourites.api.urls'), name='favourites'),
     path('api/v1/accounts/', include('accounts.api.urls'), name='accounts'),
+    path('api/v1/device_types/', include('device_types.api.urls'), name='device_types'),
+    path('api/v1/brands/', include('brands.api.urls'), name='brands'),
+    path('api/v1/models/', include('models.api.urls'), name='models'),
+
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
