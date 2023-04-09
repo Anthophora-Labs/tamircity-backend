@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'brands',
     'models',
     'payments',
+    'newletters',
 
     #Third-party Libraries
     'rest_framework',
