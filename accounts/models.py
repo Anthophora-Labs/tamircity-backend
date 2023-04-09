@@ -5,8 +5,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-class Profile(models.Model): #TechnicalService
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+class TechService(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='tech_service')
     description = models.TextField(blank=True, null=True, max_length=500)
     twitter = models.CharField(max_length=200, blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -22,8 +22,8 @@ class Profile(models.Model): #TechnicalService
 def create_user_prof(sender, instance, created, **kwargs):
     if not created:
         return
-    Profile.objects.create(user=instance)
-    instance.profile.save()
+    TechService.objects.create(user=instance)
+    instance.tech_service.save()
 
 
 class Customer(models.Model):

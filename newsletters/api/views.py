@@ -3,19 +3,19 @@ from rest_framework.generics import (
                                     ListAPIView,
                                     )
 from rest_framework.permissions import IsAuthenticated
-from newletters.api.serializers import NewLetterCreateSerializer, NewLetterListSerializer
-from newletters.models import NewLetter
+from newsletters.api.serializers import NewsLetterCreateSerializer, NewsLetterListSerializer
+from newsletters.models import NewsLetter
 
 
-class NewLetterCreateAPIView(CreateAPIView):
-    queryset = NewLetter.objects.all()
-    serializer_class = NewLetterCreateSerializer
+class NewsLetterCreateAPIView(CreateAPIView):
+    queryset = NewsLetter.objects.all()
+    serializer_class = NewsLetterCreateSerializer
     permission_classes = [IsAuthenticated]
 
 
-class NewLetterListAPIView(ListAPIView):
-    queryset = NewLetter.objects.all()
-    serializer_class = NewLetterListSerializer
+class NewsLetterListAPIView(ListAPIView):
+    queryset = NewsLetter.objects.all()
+    serializer_class = NewsLetterListSerializer
 
     # def get_queryset(self):
     #     queryset = Comment.objects.filter(parent = None)

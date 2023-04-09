@@ -2,12 +2,12 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from newletters.models import NewLetter
+from newsletters.models import NewsLetter
 
 
-class NewLetterCreateSerializer(ModelSerializer):
+class NewsLetterCreateSerializer(ModelSerializer):
     class Meta:
-        model = NewLetter
+        model = NewsLetter
         fields = ['email']
 
     # def validate(self, attrs):
@@ -17,12 +17,12 @@ class NewLetterCreateSerializer(ModelSerializer):
     #     return attrs
 
 
-class NewLetterListSerializer(ModelSerializer):
-    queryset = NewLetter.objects.all()
+class NewsLetterListSerializer(ModelSerializer):
+    queryset = NewsLetter.objects.all()
 
 
     class Meta:
-        model = NewLetter
+        model = NewsLetter
         fields = '__all__'
 
     # def get_replies(self, obj):

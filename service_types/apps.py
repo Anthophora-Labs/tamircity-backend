@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class NewlettersConfig(AppConfig):
+class ServiceTypesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'newletters'
+    name = 'service_types'
