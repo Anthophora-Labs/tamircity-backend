@@ -2,13 +2,13 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from brands.models import Brand
+from contacts.models import Contact
 
 
-class BrandCreateSerializer(ModelSerializer):
+class ContactCreateSerializer(ModelSerializer):
     class Meta:
-        model = Brand
-        fields = ['name', 'device_type']
+        model = Contact
+        fields = ['full_name', 'email','phone_number','description']
 
     # def validate(self, attrs):
     #     if(attrs["parent"]):
@@ -17,12 +17,12 @@ class BrandCreateSerializer(ModelSerializer):
     #     return attrs
 
 
-class BrandListSerializer(ModelSerializer):
-    queryset = Brand.objects.all()
+class ContactListSerializer(ModelSerializer):
+    queryset = Contact.objects.all()
 
 
     class Meta:
-        model = Brand
+        model = Contact
         fields = '__all__'
 
     # def get_replies(self, obj):
