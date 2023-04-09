@@ -19,7 +19,7 @@ class TechServiceCandidate(models.Model):
     email = models.EmailField(max_length=50)
     phone_number = models.CharField(max_length=15)
     is_active = models.BooleanField(default=True)
-    status = models.CharField(max_length=50, choices=ExpertiseServiceCandidateStatus)
+    status = models.CharField(max_length=50, choices=TechServiceCandidateStatus)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
