@@ -153,7 +153,7 @@ class UserPasswordChange(APITestCase):
         response = self.client.put(self.url, data)
         self.assertEqual(400, response.status_code)
 
-class UserProfileUpdate(APITestCase):
+class UserTechServiceUpdate(APITestCase):
     url = reverse("account:me")
     url_login = reverse("token_obtain_pair")
 
@@ -183,7 +183,7 @@ class UserProfileUpdate(APITestCase):
             "id" : 1,
             "first_name": "",
             "last_name": "",
-            "profile": {
+            "tech_service": {
                 "id": 1,
                 "note": "",
                 "twitter": "asdas"
@@ -200,7 +200,7 @@ class UserProfileUpdate(APITestCase):
             "id": 1,
             "first_name": "",
             "last_name": "",
-            "profile": {
+            "tech_service": {
                 "id": 1,
                 "note": "",
                 "twitter": ""

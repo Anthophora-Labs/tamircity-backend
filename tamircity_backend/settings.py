@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'payments',
     'newletters',
     'service_types',
+    'digital_onboarding',
 
     #Third-party Libraries
     'rest_framework',

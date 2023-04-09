@@ -3,29 +3,29 @@ from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer, Serializer
 
-from accounts.models import Profile
+from accounts.models import TechService
 
 
-class ProfileSerializer(ModelSerializer):
+class TechServiceSerializer(ModelSerializer):
     class Meta:
-        model = Profile
+        model = TechService
         fields = ('id', 'description', 'twitter')
 
 
 class UserSerializer(ModelSerializer):
-    profile = ProfileSerializer()
+    tech_service = TechServiceSerializer()
 
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name', 'profile')
+        fields = ('id', 'first_name', 'last_name', 'tech_service')
 
     def update(self, instance, validated_data):
-        profile = validated_data.pop('profile')
-        profile_serializer = ProfileSerializer(instance.profile, data=profile)
-        profile_serializer.is_valid(raise_exception=True)
-        profile_serializer.save()
+        tech_service = validated_data.pop('tech_service')
+        tech_service_serializer = TechServiceSerializer(instance.tech_service, data=tech_service)
+        tech_service_serializer.is_valid(raise_exception=True)
+        tech_service_serializer.save()
         return super(UserSerializer, self).update(instance, validated_data)
-        # Additional Profile Update, also update User
+        # Additional TechService Update, also update User
 
 
 # API Views Unlike Generic Views

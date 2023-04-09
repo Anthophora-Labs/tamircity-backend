@@ -12,7 +12,7 @@ from accounts.api.serializers import UserSerializer, ChangePasswordSerializer, R
 from accounts.api.throttles import RegisterThrottle
 
 
-class ProfileView(RetrieveUpdateAPIView):
+class TechServiceView(RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
     queryset = User.objects.all()
