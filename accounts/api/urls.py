@@ -1,6 +1,6 @@
 from django.urls import path
 from accounts.api.views import (
-                        ProfileView,
+                        TechServiceView,
                         UpdatePassword,
                         CreateUserView
                         )
@@ -9,7 +9,7 @@ app_name = "accounts"
 
 
 urlpatterns = [
-    path('me', ProfileView.as_view(), name='me'),
+    path('me', TechServiceView.as_view(), name='me'),
     path('change-password', UpdatePassword.as_view(), name='change-password'),
     path('register', CreateUserView.as_view(), name='register'),
 ]
