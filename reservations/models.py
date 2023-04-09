@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from service_types.models import ServiceType
 
 
 class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    service_type = models.ForeignKey(ServiceType, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     phone_number = models.CharField(max_length=50)

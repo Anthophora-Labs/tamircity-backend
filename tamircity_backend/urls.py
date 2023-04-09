@@ -34,6 +34,7 @@ urlpatterns = [
     path('api/v1/models/', include('models.api.urls'), name='models'),
     path('api/v1/payments/', include('payments.api.urls'), name='payments'),
     path('api/v1/newletters/', include('newletters.api.urls'), name='newletters'),
+    path('api/v1/service_types/', include('service_types.api.urls'), name='service_types'),
 
 
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
