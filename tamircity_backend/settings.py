@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'service_types',
     'digital_onboarding',
     'contacts',
+    'expertise_forms',
 
     #Third-party Libraries
     'rest_framework',
