@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-class Profile(models.Model): #TechnicalService
+class TechService(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     description = models.TextField(blank=True, null=True, max_length=500)
     twitter = models.CharField(max_length=200, blank=True, null=True)
