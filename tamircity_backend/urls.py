@@ -36,7 +36,7 @@ urlpatterns = [
     path('api/v1/newsletters/', include('newsletters.api.urls'), name='newsletters'),
     path('api/v1/service_types/', include('service_types.api.urls'), name='service_types'),
     path('api/v1/contacts/', include('contacts.api.urls'), name='contacts'),
-
+    path('api/v1/expertise-forms/', include('expertise_forms.api.urls'), name='expertise_forms'),
 
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
