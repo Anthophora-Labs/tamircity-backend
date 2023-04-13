@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'service_types',
     'digital_onboarding',
     'contacts',
+    'expertise_forms',
 
     #Third-party Libraries
     'rest_framework',
@@ -152,7 +153,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'Europe/Istanbul'
 
 USE_I18N = True
 
