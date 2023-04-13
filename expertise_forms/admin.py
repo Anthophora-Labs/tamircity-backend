@@ -22,3 +22,35 @@ class ExpertiseWatchAdmin(admin.ModelAdmin):
 
     class Meta:
         model = ExpertiseWatch
+
+
+@admin.register(ExpertiseConsole)
+class ExpertiseConsoledAdmin(admin.ModelAdmin):
+     list_display = [field.name for field in ExpertiseConsole._meta.fields]
+     list_display_links = ["reservation"]
+     search_fields = ["reservation"]
+     list_filter = ["created_date"]
+
+     class Meta:
+         model = ExpertiseConsole
+
+@admin.register(ExpertisePhone)
+class ExpertisePhoneAdmin(admin.ModelAdmin):
+     list_display = [field.name for field in ExpertisePhone._meta.fields]
+     list_display_links = ["reservation"]
+     search_fields = ["reservation"]
+     list_filter = ["created_date"]
+
+     class Meta:
+         model = ExpertisePhone
+
+
+@admin.register(ExpertisePc)
+class ExpertisePcAdmin(admin.ModelAdmin):
+     list_display = [field.name for field in ExpertisePc._meta.fields]
+     list_display_links = ["reservation"]
+     search_fields = ["reservation"]
+     list_filter = ["created_date"]
+
+     class Meta:
+         model = ExpertisePc
