@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ExpertiseTV, ExpertiseWatch
+from .models import ExpertiseTV, ExpertiseWatch, ExpertiseConsole, ExpertisePhone, ExpertisePc
 
 
 @admin.register(ExpertiseTV)

@@ -1,0 +1,1 @@
+web: gunicorn tamircity_backend.wsgi
