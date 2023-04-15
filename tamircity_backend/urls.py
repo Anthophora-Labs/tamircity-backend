@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 
 from rest_framework_simplejwt import views as jwt_views
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
@@ -29,15 +31,23 @@ urlpatterns = [
     path('api/v1/comments/', include('comments.api.urls'), name='comments'),
     path('api/v1/favourites/', include('favourites.api.urls'), name='favourites'),
     path('api/v1/accounts/', include('accounts.api.urls'), name='accounts'),
-    path('api/v1/device_types/', include('device_types.api.urls'), name='device_types'),
+    path('api/v1/device-types/', include('device_types.api.urls'), name='device_types'),
     path('api/v1/brands/', include('brands.api.urls'), name='brands'),
     path('api/v1/models/', include('models.api.urls'), name='models'),
     path('api/v1/payments/', include('payments.api.urls'), name='payments'),
     path('api/v1/newsletters/', include('newsletters.api.urls'), name='newsletters'),
-    path('api/v1/service_types/', include('service_types.api.urls'), name='service_types'),
+    path('api/v1/service-types/', include('service_types.api.urls'), name='service_types'),
     path('api/v1/contacts/', include('contacts.api.urls'), name='contacts'),
     path('api/v1/expertise-forms/', include('expertise_forms.api.urls'), name='expertise_forms'),
 
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+]
+#] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+    # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()
