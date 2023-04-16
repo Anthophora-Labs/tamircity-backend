@@ -23,3 +23,11 @@ class ModelListAPIView(ListAPIView):
     #     if query:
     #         queryset = queryset.filter(post = query)
     #     return queryset
+
+
+class ModelListByDeviceTypeBrandAPIView(ListAPIView):
+    serializer_class = ModelListSerializer
+
+    def get_queryset(self):
+        queryset = Model.objects.filter(device_type = self.kwargs['pk_device_type'], brand = self.kwargs['pk_brand'])
+        return queryset

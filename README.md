@@ -52,7 +52,9 @@
 
 ### Naming Convention - Code Style - Best Practices
  * Reformat Code, Files
+ * https://medium.com/@nadinCodeHat/rest-api-naming-conventions-and-best-practices-1c4e781eb6a5
  * https://hub.packtpub.com/code-style-django/
+ * https://www.django-rest-framework.org/api-guide/routers/
  * https://learndjango.com/tutorials/django-best-practices-projects-vs-apps
  * https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/
 

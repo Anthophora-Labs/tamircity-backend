@@ -1,7 +1,8 @@
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
+from accounts.models import TechService
 from rest_framework import status
-from rest_framework.generics import RetrieveUpdateAPIView, get_object_or_404, CreateAPIView
+from rest_framework.generics import RetrieveUpdateAPIView, get_object_or_404, CreateAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 

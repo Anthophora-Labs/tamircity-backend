@@ -2,7 +2,7 @@ from django.urls import path
 from accounts.api.views import (
                         TechServiceView,
                         UpdatePassword,
-                        CreateUserView
+                        CreateUserView,
                         )
 
 app_name = "accounts"
