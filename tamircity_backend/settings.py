@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
-import dj_database_url # In Prod
+#import dj_database_url # In Prod
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -69,7 +69,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware", # In Prod
+    #"whitenoise.middleware.WhiteNoiseMiddleware", # In Prod
 ]
 
 SIMPLE_JWT = {
@@ -118,7 +118,7 @@ WSGI_APPLICATION = "tamircity_backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-db_from_env = dj_database_url.config(conn_max_age=600) # In Prod
+#db_from_env = dj_database_url.config(conn_max_age=600) # In Prod
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -129,7 +129,7 @@ DATABASES = {
         "PORT": os.getenv("DB_PORT", '5432'),
     }
 }
-DATABASES['default'].update(db_from_env) # In Prod
+#DATABASES['default'].update(db_from_env) # In Prod
 
 # DATABASES = {
 #     "default": {
@@ -175,7 +175,7 @@ USE_TZ = True
 # MEDIA_URL = 'media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # In Prod
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # In Prod
 
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] # Testing for Passive

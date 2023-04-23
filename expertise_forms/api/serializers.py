@@ -61,3 +61,63 @@ class ExpertisePcListSerializer(ModelSerializer):
     class Meta:
         model = ExpertisePc
         fields = '__all__'
+
+class ExpertisePcSerializer(serializers.ModelSerializer):
+   url = serializers.HyperlinkedIdentityField(
+        view_name='expertise_pc:detail',
+        #lookup_field='slug'
+   )
+
+
+   class Meta:
+       model = ExpertisePc
+       #fields = '__all__'
+       exclude = ['updated_date', 'created_date']
+
+class ExpertisePhoneSerializer(serializers.ModelSerializer):
+   url = serializers.HyperlinkedIdentityField(
+        view_name='expertise_phone:detail',
+        #lookup_field='slug'
+   )
+
+
+   class Meta:
+       model = ExpertisePhone
+       #fields = '__all__'
+       exclude = ['updated_date', 'created_date']
+
+class ExpertiseConsoleSerializer(serializers.ModelSerializer):
+   url = serializers.HyperlinkedIdentityField(
+        view_name='expertise_console:detail',
+        #lookup_field='slug'
+   )
+
+
+   class Meta:
+       model = ExpertiseConsole
+       #fields = '__all__'
+       exclude = ['updated_date', 'created_date']
+
+class ExpertiseWatchSerializer(serializers.ModelSerializer):
+   url = serializers.HyperlinkedIdentityField(
+        view_name='expertise_watch:detail',
+        #lookup_field='slug'
+   )
+
+
+   class Meta:
+       model = ExpertiseWatch
+       #fields = '__all__'
+       exclude = ['updated_date', 'created_date']
+
+class ExpertiseTVSerializer(serializers.ModelSerializer):
+   url = serializers.HyperlinkedIdentityField(
+        view_name='expertise_tv:detail',
+        #lookup_field='slug'
+   )
+
+
+   class Meta:
+       model = ExpertiseTV
+       #fields = '__all__'
+       exclude = ['updated_date', 'created_date']
