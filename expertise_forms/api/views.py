@@ -1,8 +1,9 @@
 from rest_framework.generics import (
                                     CreateAPIView,
-                                    ListAPIView
+                                    ListAPIView,
+                                    RetrieveAPIView,
                                     )
-from expertise_forms.api.serializers import ExpertiseTVCreateSerializer, ExpertiseWatchCreateSerializer, ExpertiseConsoleCreateSerializer, ExpertisePhoneCreateSerializer, ExpertisePcCreateSerializer, ExpertiseConsoleListSerializer, ExpertisePhoneListSerializer, ExpertisePcListSerializer
+from expertise_forms.api.serializers import ExpertiseTVCreateSerializer, ExpertiseWatchCreateSerializer, ExpertiseConsoleCreateSerializer, ExpertisePhoneCreateSerializer, ExpertisePcCreateSerializer, ExpertiseConsoleListSerializer, ExpertisePhoneListSerializer, ExpertisePcListSerializer, ExpertisePcSerializer, ExpertiseTVSerializer, ExpertisePhoneSerializer, ExpertiseWatchSerializer, ExpertiseConsoleSerializer
 from expertise_forms.models import ExpertiseTV, ExpertiseWatch, ExpertiseConsole, ExpertisePhone, ExpertisePc
 
 
@@ -39,3 +40,28 @@ class ExpertisePhoneListAPIView(ListAPIView):
 class ExpertisePcListAPIView(ListAPIView):
     queryset = ExpertisePc.objects.all()
     serializer_class = ExpertisePcListSerializer
+
+class ExpertisePcDetailAPIView(RetrieveAPIView):
+    queryset = ExpertisePc.objects.all()
+    serializer_class = ExpertisePcSerializer
+    lookup_field = 'pk'
+
+class ExpertiseTVDetailAPIView(RetrieveAPIView):
+    queryset = ExpertiseTV.objects.all()
+    serializer_class = ExpertiseTVSerializer
+    lookup_field = 'pk'
+
+class ExpertiseConsoleDetailAPIView(RetrieveAPIView):
+    queryset = ExpertiseConsole.objects.all()
+    serializer_class = ExpertiseConsoleSerializer
+    lookup_field = 'pk'
+
+class ExpertiseWatchDetailAPIView(RetrieveAPIView):
+    queryset = ExpertiseWatch.objects.all()
+    serializer_class = ExpertiseWatchSerializer
+    lookup_field = 'pk'
+
+class ExpertisePhoneDetailAPIView(RetrieveAPIView):
+    queryset = ExpertisePhone.objects.all()
+    serializer_class = ExpertisePhoneSerializer
+    lookup_field = 'pk'
